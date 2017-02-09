@@ -50,7 +50,5 @@ jspm_packages
 
 
 .gitignore
-.idea/fantastic-server.iml
-.idea/modules.xml
-.idea/workspace.xml
+.idea
 package.json
