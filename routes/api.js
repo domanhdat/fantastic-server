@@ -1,7 +1,10 @@
 var router = require('koa-router')();
 
 router.get('/', function *(next) {
-  this.body = 'this a users response!';
+  this.body = {
+      app: "fantastic api",
+      version: "1.0.0"
+  };
 });
 
 module.exports = router;
