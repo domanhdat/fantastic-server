@@ -5,7 +5,11 @@ const app = require('koa')()
     , views = require('koa-views')
     , onerror = require('koa-onerror')
     , KoajsNunjucks = require('koajs-nunjucks')
+    , mongodbProvider = require('./shared/mongodb.provider')
 ;
+
+// mongodb
+app.use(mongodbProvider);
 
 const index = require('./routes/index');
 const api = require('./routes/api');
