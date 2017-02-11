@@ -1,13 +1,15 @@
 "use strict";
 
-module.exports = {
+console.log(process.env);
 
-    // database
+const config = {
     database: {
         mongodb: {
-            host: 'localhost',
-            port: 27017,
-            db: 'test'
+            host: process.env['DB_HOST'],
+            port: process.env['DB_PORT'],
+            db  : process.env['DB_NAME']
         }
     }
 };
+
+module.exports = config;

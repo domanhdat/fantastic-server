@@ -1,6 +1,8 @@
 "use strict";
 
-const mongo  = require('koa-mongo');
-const config = require('./../config');
+const mongo = require('koa-mongo');
 
-module.exports = mongo(config.database.mongodb);
+module.exports = (config) => {
+    console.log(config);
+    return mongo(config)
+};

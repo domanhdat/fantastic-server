@@ -1,47 +1,36 @@
-const app = require('koa')()
-    , koa = require('koa-router')()
-    , logger = require('koa-logger')
-    , json = require('koa-json')
-    , views = require('koa-views')
-    , onerror = require('koa-onerror')
-    , KoajsNunjucks = require('koajs-nunjucks')
-    , mongodbProvider = require('./shared/mongodb.provider')
-;
+require('dotenv').config();
+const app     = require('koa')(),
+      koa     = require('koa-router')(),
+      logger  = require('koa-logger'),
+      json    = require('koa-json'),
+      onerror = require('koa-onerror'),
+      web     = require('./http/routes/web'),
+      api     = require('./http/routes/api'),
+      boot    = require('./boot')
+    ;
 
-// mongodb
-app.use(mongodbProvider);
-
-const index = require('./routes/index');
-const api = require('./routes/api');
-const fMiddleware = KoajsNunjucks(__dirname + '/views', {
-
-});
+boot(app);
 
 app.use(require('koa-bodyparser')());
 app.use(json());
 app.use(logger());
 
-// koa nunjucks
-app.use( fMiddleware );
-
 app.use(function *(next) {
-    var start = new Date;
+    const start = new Date;
     yield next;
-    var ms = new Date - start;
+    const ms = new Date - start;
     console.log('%s %s - %s', this.method, this.url, ms);
 });
 
 app.use(require('koa-static')(__dirname + '/public'));
 
 // routes definition
-koa.use('/', index.routes(), index.allowedMethods());
+koa.use('/', web.routes(), web.allowedMethods());
 koa.use('/api', api.routes(), api.allowedMethods());
 
 // mount root routes  
 app.use(koa.routes());
 
-app.on('error', function (err, ctx) {
-    logger.error('server error', err, ctx);
-});
+app.on('error', (err, ctx) => console.error('server error', err, ctx));
 
 module.exports = app;
