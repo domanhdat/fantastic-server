@@ -15,7 +15,12 @@ class ArticleRepository {
     }
     
     findById(id) {
-        return this.collection.findOne({_id: ObjectId(id)}).limit(1).next().then(this.articleFactory.buildOne);
+        return this.collection.find({_id: ObjectId(id)}).limit(1).next().then(result => {
+            if (!result) {
+                throw ('aaa');
+            }
+            return this.articleFactory.buildOne(result);
+        });
     }
 }
 
