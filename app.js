@@ -31,6 +31,4 @@ koa.use('/api', api.routes(), api.allowedMethods());
 // mount root routes  
 app.use(koa.routes());
 
-app.on('error', (err, ctx) => console.error('server error', err, ctx));
-
 module.exports = app;

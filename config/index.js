@@ -1,7 +1,5 @@
 "use strict";
 
-console.log(process.env);
-
 const config = {
     database: {
         mongodb: {
