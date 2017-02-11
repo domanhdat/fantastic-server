@@ -8,8 +8,8 @@ router.get('/', function *(next) {
 });
 
 router.get('/test', function *() {
-    yield this.userRepo.save({username: 'dat', password: 123456});
-    this.body = yield this.userRepo.findAll();
+    yield this.profileRepo.save({username: 'dat', password: 123456});
+    this.body = yield this.profileRepo.findAll();
 });
 
 module.exports = router;
