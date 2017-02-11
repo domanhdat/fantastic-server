@@ -25,24 +25,6 @@ class Article {
     }
     
     /**
-     *
-     * @param {string} title
-     * @returns {Article}
-     */
-    setTitle(title) {
-        this.attribute['_title'] = title;
-        return this;
-    }
-    
-    /**
-     *
-     * @returns {*}
-     */
-    getTitle() {
-        return this.attribute['_title'];
-    }
-    
-    /**
      * @param content
      * @returns {Article}
      */

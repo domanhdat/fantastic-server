@@ -10,7 +10,7 @@ const app     = require('koa')(),
     ;
 
 boot(app);
-
+require('koa-validate')(app);
 app.use(require('koa-bodyparser')());
 app.use(json());
 app.use(logger());

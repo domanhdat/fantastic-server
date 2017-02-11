@@ -12,11 +12,11 @@ class ArticleFactory {
      * @param rawData
      * @returns {Article}
      */
-    buildOne (rawData) {
+    buildOne(rawData) {
         return new Article()
             .setId(rawData['_id'])
-            .setTitle(rawData['title'])
-        ;
+            .setContent(rawData['content'])
+            ;
     }
 }
 

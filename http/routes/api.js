@@ -1,15 +1,9 @@
-const router = require('koa-router')();
+const router     = require('koa-router')();
+const controller = require('./../controller');
+const middleware = require('./../middleware');
 
-router.get('/', function *(next) {
-    this.body = {
-        app    : "fantastic api",
-        version: "1.0.0"
-    };
-});
-
-router.get('/test', function *() {
-    yield this.userRepo.save({username: 'dat', password: 123456});
-    this.body = yield this.userRepo.findAll();
-});
+// article
+router.get('/article/:id', controller.articleController.getArticleByArticleId);
+router.post('/article', middleware.articleMiddleware.createArticleValidate, controller.articleController.saveArticle);
 
 module.exports = router;
