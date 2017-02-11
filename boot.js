@@ -6,14 +6,14 @@ const mongodbProvider = require('./shared/mongodb.provider');
 const errorProvider   = require('./shared/error.provider');
 
 // service
-const UserServiceProvider = require('./fanstatic/user/user.service-provider');
+const ProfileServiceProvider = require('./fanstatic/profile/profile.service-provider');
 
 module.exports = (app) => {
     app.context.config = config;
     app.use(nunjuckProvider);
     app.use(mongodbProvider(config.database.mongodb));
     app.use(errorProvider);
-    app.use(UserServiceProvider);
+    app.use(ProfileServiceProvider);
     
     return app;
 };

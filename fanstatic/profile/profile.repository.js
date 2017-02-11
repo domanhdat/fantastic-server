@@ -1,4 +1,4 @@
-class UserRepository {
+class ProfileRepository {
     
     /**
      *
@@ -21,4 +21,4 @@ class UserRepository {
     }
 }
 
-module.exports = UserRepository;
+module.exports = ProfileRepository;
