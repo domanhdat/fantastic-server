@@ -25,6 +25,16 @@ class Profile {
     avatar;
 
     /**
+     * @private
+     */
+    coverPhoto;
+
+    /**
+     * @private
+     */
+    description;
+
+    /**
      * @public
      *
      * @returns {*}
@@ -114,4 +124,41 @@ class Profile {
     setAvatar(avatar) {
         this.avatar = avatar;
     }
+
+    /**
+     * @public
+     */
+    getCoverPhoto() {
+        return this.coverPhoto;
+    }
+
+    /**
+     * @private
+     *
+     * @param coverPhoto
+     */
+    setCoverPhoto(coverPhoto) {
+        this.coverPhoto = coverPhoto;
+        return this;
+    }
+
+    /**
+     * @public
+     * @returns {*}
+     */
+    getDescription(){
+        return this.description;
+    }
+
+    /**
+     * @private
+     *
+     * @param description
+     * @returns {Profile}
+     */
+    setDescription(description) {
+        this.description = description;
+        return this;
+    }
+
 }
