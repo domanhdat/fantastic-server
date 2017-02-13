@@ -12,4 +12,16 @@ router.get('/test', function *() {
     this.body = yield this.profileRepo.findAll();
 });
 
+
+/**
+ * GET PROFILE
+ */
+router.get('/profile/:id', controller.profileController.getProfile);
+
+/**
+ * UPDATE PROFILE
+ */
+router.put('/profile/:id', controller.profileController.updateProfile);
+
+
 module.exports = router;

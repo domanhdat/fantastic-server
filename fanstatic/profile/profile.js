@@ -1,38 +1,10 @@
+"use strict";
+
 class Profile {
-    /**
-     * @private
-     */
-    _id;
 
-    /**
-     * @private
-     */
-    phone;
-
-    /**
-     * @private
-     */
-    name;
-
-    /**
-     * @
-     */
-    dateOfBirth;
-
-    /**
-     * @private
-     */
-    avatar;
-
-    /**
-     * @private
-     */
-    coverPhoto;
-
-    /**
-     * @private
-     */
-    description;
+    constructor() {
+        this.attribute = {};
+    }
 
     /**
      * @public
@@ -40,19 +12,37 @@ class Profile {
      * @returns {*}
      */
     getId() {
-        return this._id;
+        return this.attribute['_id'];
     }
 
     /**
-     * @private
+     * @public
      * @param id
      *
      */
     setId(id) {
-        this._id = id;
+        this.attribute['_id'] = id;
         return this;
     }
 
+
+    /**
+     * @public
+     * @returns {*}
+     */
+    getCredentialId() {
+        return this.attribute['credentialId']
+    }
+
+    /**
+     *
+     * @param credentialId
+     * @returns {Profile}
+     */
+    setCredentialId(credentialId) {
+        this.attribute['credentialId'] = credentialId;
+        return this;
+    }
 
     /**
      * @public
@@ -60,16 +50,16 @@ class Profile {
      * @returns {*}
      */
     getPhone() {
-        return this.phone;
+        return this.attribute['phone'];
     }
 
     /**
-     * @private
+     * @public
      *
      * @param phone
      */
     setPhone(phone) {
-        this.phone = phone;
+        this.attribute['phone'] = phone;
         return this;
     }
 
@@ -79,14 +69,14 @@ class Profile {
      * @returns {*}
      */
     getName() {
-        return this.name;
+        return this.attribute['name'];
     }
 
     /**
-     * @private
+     * @public
      */
     setName(name) {
-        this.name = name;
+        this.attribute['name'] = name;
         return this;
     }
 
@@ -97,48 +87,48 @@ class Profile {
      * @returns {*}
      */
     getDateOfBirth() {
-        return this.dateOfBirth;
+        return this.attribute['dateOfBirth'];
     }
 
     /**
-     * @private
+     * @public
      *
      * @param dateOfBirth
      */
     setDateOfBirth(dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+        this.attribute['dateOfBirth'] = dateOfBirth;
     }
 
     /**
      * @public
      */
     getAvatar() {
-        return this.avatar;
+        return this.attribute['avatar'];
     }
 
     /**
-     * @private
+     * @public
      *
      * @param avatar
      */
     setAvatar(avatar) {
-        this.avatar = avatar;
+        this.attribute['avatar'] = avatar;
     }
 
     /**
      * @public
      */
     getCoverPhoto() {
-        return this.coverPhoto;
+        return this.attribute['coverPhoto'];
     }
 
     /**
-     * @private
+     * @public
      *
      * @param coverPhoto
      */
     setCoverPhoto(coverPhoto) {
-        this.coverPhoto = coverPhoto;
+        this.attribute['coverPhoto'] = coverPhoto;
         return this;
     }
 
@@ -147,18 +137,20 @@ class Profile {
      * @returns {*}
      */
     getDescription(){
-        return this.description;
+        return this.attribute['description'];
     }
 
     /**
-     * @private
+     * @public
      *
      * @param description
      * @returns {Profile}
      */
     setDescription(description) {
-        this.description = description;
+        this.attribute['description'] = description;
         return this;
     }
 
 }
+
+module.exports = Profile;
