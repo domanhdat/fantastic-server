@@ -2,6 +2,8 @@
 
 const bcrypt = require("bcryptjs");
 const rantoken = require("rand-token").suid;
+const lodash = require("lodash");
+const config = require("/config");
 
 /**
  * bcrypt wrapper
@@ -25,16 +27,29 @@ class EmailAuthenticationStrategy {
         this.credentialRepository = credentialRepository;
     }
 
-    authenticate(credential) {
-        let credentialFounded = this.credentialRepository.findByEmail(credential.identity.email);
+    *authenticate(credential) {
+        let credentialFounded = this.credentialRepository.findByEmail(credential.email);
 
         /**
-         * compare password success
-         * generate new token and store to db
+         * not found credential
          */
-        if (yield bcryptCompare(credential.identity.password, credentialFounded.identity.password)) {
-            // rantoken( || 16)
-        };
+        if ( ! credentialFounded) {
+            return false;
+        }
+
+        lodash.filter(credentialFounded.identities, {"email": credential.email});
+
+
+        /**
+         * compare password fail
+         */
+        if ( ! (yield bcryptCompare(credential.identity.password, credentialFounded.identity.password))) {
+            return false;
+        }
+
+        let token = rantoken( config.authentication.tokenLength || 16);
+
+
     }
 }
 

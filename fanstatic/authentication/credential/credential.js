@@ -4,7 +4,8 @@ class Credential {
 
     constructor () {
         this.attribute = {
-            activated: false
+            activated: false,
+            identities: []
         };
     }
 
@@ -26,13 +27,13 @@ class Credential {
         return this.attribute.tokens;
     }
 
-    set identity(identity) {
-        this.attribute.identity = identity;
+    set identities(identities) {
+        this.attribute.identities = identities;
         return this;
     }
 
-    get identity() {
-        return this.attribute.identity;
+    get identities() {
+        return this.attribute.identities;
     }
 
     set createdAt(createdAt) {

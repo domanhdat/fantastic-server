@@ -42,6 +42,15 @@ class CredentialRepository {
     *findByToken(token) {
         return this.credentialFactory.buildOneFromDb(yield this.collection.find({token: token}).limit(1).toArray());
     }
+
+    /**
+     *
+     * @param email
+     * @return Credential credential
+     */
+    *findByEmail(email) {
+        return this.credentialFactory.buildOneFromDb(yield this.collection.find({"identity.email": email}).limit(1).toArray());
+    }
 }
 
 export default CredentialRepository;
