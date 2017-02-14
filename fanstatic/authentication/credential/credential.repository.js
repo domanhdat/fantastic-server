@@ -40,7 +40,7 @@ class CredentialRepository {
      * @return Credential credential
      */
     *findByToken(token) {
-        return this.credentialFactory.buildOneFromDb(yield this.collection.find({token: token}).limit(1).toArray());
+        return this.credentialFactory.buildOneFromDb(yield this.collection.find({tokens: token}).limit(1).toArray());
     }
 
     /**
@@ -50,6 +50,19 @@ class CredentialRepository {
      */
     *findByEmail(email) {
         return this.credentialFactory.buildOneFromDb(yield this.collection.find({"identity.email": email}).limit(1).toArray());
+    }
+
+    /**
+     *
+     * @param token
+     * @param credential
+     * @return {*}
+     */
+    *insertTokenToExistedCredential(token, credential) {
+        yield this.collection.update(
+            {_id: credential.id},
+            { $push: { tokens: {token: token, createdAt: new Date().getTime() }}}
+        );
     }
 }
 
