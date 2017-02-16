@@ -3,7 +3,7 @@
 const bcrypt = require("bcryptjs");
 const rantoken = require("rand-token").suid;
 const lodash = require("lodash");
-const config = require("/config");
+const config = require("config");
 
 /**
  * bcrypt wrapper
