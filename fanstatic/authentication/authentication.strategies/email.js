@@ -33,7 +33,7 @@ class EmailAuthenticationStrategy {
      * @return {*}
      */
     *authenticate(credential) {
-        let credentialFounded = this.credentialRepository.findByEmail(credential['email']);
+        const credentialFounded = this.credentialRepository.findByEmail(credential['email']);
 
         /**
          * not found credential
@@ -45,15 +45,15 @@ class EmailAuthenticationStrategy {
         let identity = lodash.find(credentialFounded.identities, ['email', credential['email']]);
 
         /**
-         * compare password fail
+         * compare password failed
          */
-        if ( ! (yield bcryptCompare(credential['textPassword'], identity['passwordHashed']))) {
+        if ( ! (yield bcryptCompare(credential['textPassword'], identity['hashedPassword']))) {
             return false;
         }
 
         let token = rantoken( config.authentication.tokenLength || 16);
 
-        yield this.credentialRepository.insertTokenToExistedCredential(token, credentialFounded);
+        yield this.credentialRepository.updateWithNewToken(credentialFounded, token);
 
         return {tokenGenerated: token};
     }

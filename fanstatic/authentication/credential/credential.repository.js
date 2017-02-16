@@ -58,7 +58,7 @@ class CredentialRepository {
      * @param credential
      * @return {*}
      */
-    *insertTokenToExistedCredential(token, credential) {
+    *updateWithNewToken(credential, token) {
         yield this.collection.update(
             {_id: credential.id},
             { $push: { tokens: {token: token, createdAt: new Date().getTime() }}}
