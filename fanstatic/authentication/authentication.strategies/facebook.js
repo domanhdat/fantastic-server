@@ -10,3 +10,5 @@ class FacebookAuthenticateStrategy {
 
     }
 }
+
+module.exports = FacebookAuthenticateStrategy;

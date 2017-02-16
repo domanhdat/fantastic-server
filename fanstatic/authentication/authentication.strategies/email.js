@@ -25,6 +25,7 @@ class EmailAuthenticationStrategy {
 
     constructor(credentialRepository) {
         this.credentialRepository = credentialRepository;
+        this.name = "Email";
     }
 
     /**
@@ -60,4 +61,4 @@ class EmailAuthenticationStrategy {
 }
 
 
-export default EmailAuthenticationStrategy;
+module.exports = EmailAuthenticationStrategy;

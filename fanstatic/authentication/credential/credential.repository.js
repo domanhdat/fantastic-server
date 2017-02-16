@@ -6,6 +6,11 @@ const ObjectId = require('mongodb').ObjectId;
 
 class CredentialRepository {
 
+    /**
+     *
+     * @param collection
+     * @param credentialFactory
+     */
     constructor(collection, credentialFactory) {
         this.collection = collection;
         this.credentialFactory = credentialFactory;
@@ -66,4 +71,4 @@ class CredentialRepository {
     }
 }
 
-export default CredentialRepository;
+module.exports = CredentialRepository;

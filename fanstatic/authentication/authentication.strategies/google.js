@@ -10,3 +10,5 @@ class GoogleAuthenticateStrategy {
 
     }
 }
+
+module.exports = GoogleAuthenticateStrategy;

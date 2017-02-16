@@ -64,4 +64,4 @@ class Credential {
     }
 }
 
-export default Credential;
+module.exports = Credential;

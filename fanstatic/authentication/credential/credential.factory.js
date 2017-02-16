@@ -14,4 +14,4 @@ class CredentialFactory {
     }
 }
 
-export default CredentialFactory;
+module.exports = CredentialFactory;
