@@ -5,6 +5,7 @@ const Credential = require('./credential');
 class CredentialFactory {
 
     buildOneFromDb(rawData) {
+
         let credential = new Credential();
 
         return credential.tokens(rawData['tokens'])

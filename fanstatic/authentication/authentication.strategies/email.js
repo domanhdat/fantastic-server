@@ -43,7 +43,11 @@ class EmailAuthenticationStrategy {
             return false;
         }
 
+        console.log(credentialFounded);
+
         let identity = lodash.find(credentialFounded.identities, ['email', credential['email']]);
+
+        console.log(identity);
 
         /**
          * compare password failed
