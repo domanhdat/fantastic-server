@@ -54,8 +54,7 @@ class CredentialRepository {
      * @return Credential credential
      */
     *findByEmail(email) {
-        console.log ( email );
-        return this.credentialFactory.buildOneFromDb(yield this.collection.find({"identity.email": email}).limit(1).toArray());
+        return yield this.credentialFactory.buildOneFromDb(yield this.collection.find({"identity.email": email}).limit(1).toArray());
     }
 
     /**

@@ -34,7 +34,9 @@ class EmailAuthenticationStrategy {
      * @return {*}
      */
     *authenticate(credential) {
-        const credentialFounded = this.credentialRepository.findByEmail(credential['email']);
+        const credentialFounded = yield this.credentialRepository.findByEmail(credential['email']);
+
+        console.log ( credentialFounded );
 
         /**
          * not found credential

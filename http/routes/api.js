@@ -4,7 +4,7 @@ const middleware = require('./../middleware');
 
 
 // Authenticate
-router.post('/sigin/email', controller.authController.signInByEmailAddress);
+router.post('/signin/email', controller.authController.signInByEmailAddress);
 
 // article
 router.get('/article/:id', controller.articleController.getArticleByArticleId);
