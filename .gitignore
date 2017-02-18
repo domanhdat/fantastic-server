@@ -52,4 +52,4 @@ jspm_packages
 .gitignore
 .idea
 .env
-
+upload/upload*

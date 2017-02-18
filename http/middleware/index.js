@@ -1,3 +1,4 @@
 module.exports = {
-    articleMiddleware: require('./article.middleware')
+    articleMiddleware: require('./article.middleware'),
+    uploadMiddleware : require('./upload.middleware'),
 };

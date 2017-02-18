@@ -1,28 +1,25 @@
 require('dotenv').config();
-const app     = require('koa')(),
-      koa     = require('koa-router')(),
-      logger  = require('koa-logger'),
-      json    = require('koa-json'),
-      onerror = require('koa-onerror'),
-      web     = require('./http/routes/web'),
-      api     = require('./http/routes/api'),
-      boot    = require('./boot')
+const app         = require('koa')(),
+      koa         = require('koa-router')(),
+      path        = require('path'),
+      logger      = require('koa-logger'),
+      json        = require('koa-json'),
+      onerror     = require('koa-onerror'),
+      web         = require('./http/routes/web'),
+      api         = require('./http/routes/api'),
+      boot        = require('./boot'),
+      KoaValidate = require('koa-validate'),
+      KoaStatic   = require('koa-static'),
+      cors        = require('koa-cors'),
+      koaBody     = require('koa-body')
     ;
-
+app.use(cors());
 boot(app);
-require('koa-validate')(app);
-app.use(require('koa-bodyparser')());
+KoaValidate(app);
+app.use(koaBody());
 app.use(json());
 app.use(logger());
-
-app.use(function *(next) {
-    const start = new Date;
-    yield next;
-    const ms = new Date - start;
-    console.log('%s %s - %s', this.method, this.url, ms);
-});
-
-app.use(require('koa-static')(__dirname + '/public'));
+app.use(KoaStatic(__dirname + '/public'));
 
 // routes definition
 koa.use('/', web.routes(), web.allowedMethods());
