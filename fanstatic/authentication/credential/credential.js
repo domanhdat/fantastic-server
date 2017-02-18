@@ -45,13 +45,13 @@ class Credential {
         return this.attribute.createdAt;
     }
 
-    markAsActivated() {
-        this.attribute.activated = false;
+    set active(active) {
+        this.attribute.active = active;
         return this;
     }
 
-    get activated() {
-        return this.attribute.activated;
+    get active() {
+        return this.attribute.active = active;
     }
 
     set updatedAt(updatedAt) {

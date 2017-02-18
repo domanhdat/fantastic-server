@@ -34,9 +34,8 @@ class EmailAuthenticationStrategy {
      * @return {*}
      */
     *authenticate(credential) {
-        const credentialFounded = yield this.credentialRepository.findByEmail(credential['email']);
 
-        console.log ( credentialFounded );
+        const credentialFounded = yield this.credentialRepository.findByEmail(credential['email']);
 
         /**
          * not found credential
@@ -51,7 +50,7 @@ class EmailAuthenticationStrategy {
          * compare password failed
          */
         if ( ! (yield bcryptCompare(credential['textPassword'], identity['hashedPassword']))) {
-            return false;
+            throw new Error('Password is incorrect');
         }
 
         let token = rantoken( config.authentication.tokenLength || 16);

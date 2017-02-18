@@ -54,7 +54,7 @@ class CredentialRepository {
      * @return Credential credential
      */
     *findByEmail(email) {
-        return yield this.credentialFactory.buildOneFromDb(yield this.collection.find({"identity.email": email}).limit(1).toArray());
+        return this.credentialFactory.buildOneFromDb(yield this.collection.find({"identities.email" : email, "identities.type" : "email"}).limit(1).toArray());
     }
 
     /**
@@ -64,9 +64,12 @@ class CredentialRepository {
      * @return {*}
      */
     *updateWithNewToken(credential, token) {
-        yield this.collection.update(
-            {_id: credential.id},
-            { $push: { tokens: {token: token, createdAt: new Date().getTime() }}}
+
+        return yield this.collection.update(
+            { _id: ObjectId(credential.id) },
+            {
+                $push: { "tokens": {token: token, createdAt: new Date().getTime(), updatedAt: new Date().getTime() }}
+            }
         );
     }
 }

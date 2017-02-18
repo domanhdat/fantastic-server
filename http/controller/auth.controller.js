@@ -8,7 +8,9 @@ exports.signInByEmailAddress = function *(next) {
         email: "tongoc92@gmail.com",
         textPassword: "tongoc123"
     };
-
-    this.body = yield emailAuthenticateStrategy.authenticate(credential)
-
+    try {
+        return yield emailAuthenticateStrategy.authenticate(credential);
+    } catch (error) {
+        console.log ( error );
+    }
 };
