@@ -1,7 +1,8 @@
 require('dotenv').config();
+require('app-module-path').addPath(__dirname);
+
 const app         = require('koa')(),
       koa         = require('koa-router')(),
-      path        = require('path'),
       logger      = require('koa-logger'),
       json        = require('koa-json'),
       onerror     = require('koa-onerror'),

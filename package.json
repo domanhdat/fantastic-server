@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www"
   },
   "dependencies": {
     "aws-sdk": "^2.16.0",
+    "app-module-path": "^2.2.0",
+    "bcryptjs": "^2.4.3",
     "co": "^4.6.0",
     "debug": "^2.2.0",
     "dotenv": "^4.0.0",
@@ -26,11 +28,12 @@
     "koa.io": "0.0.3",
     "koajs-nunjucks": "^1.0.1",
     "lodash": "^4.17.4",
+    "mongodb": "^2.2.22",
+    "nunjucks": "^3.0.0",
+    "rand-token": "^0.3.0",
     "md5": "^2.2.1",
     "mime-types": "^2.1.14",
     "moment": "^2.17.1",
-    "mongodb": "^2.2.22",
-    "nunjucks": "^3.0.0",
     "randomstring": "^1.1.5",
     "uniqid": "^4.1.1"
   }

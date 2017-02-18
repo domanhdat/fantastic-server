@@ -8,6 +8,7 @@ const s3ServiceProvider = require('./shared/s3-service.provider');
 // service
 const ArticleServiceProvider = require('./fanstatic/article/article.service-provider');
 const ProfileServiceProvider = require('./fanstatic/profile/profile.service-provider');
+const AuthenticationProvider = require('./fanstatic/authentication/authenticate.provider');
 
 module.exports = (app) => {
     app.context.config = config;
@@ -16,6 +17,7 @@ module.exports = (app) => {
     app.use(s3ServiceProvider);
     app.use(ArticleServiceProvider);
     app.use(ProfileServiceProvider);
-    
+    app.use(AuthenticationProvider);
+
     return app;
 };

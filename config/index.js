@@ -16,6 +16,10 @@ const config = {
             port: process.env['DB_PORT'],
             db  : process.env['DB_NAME']
         }
+    },
+
+    authentication: {
+        tokenLength: 16
     }
 };
 
