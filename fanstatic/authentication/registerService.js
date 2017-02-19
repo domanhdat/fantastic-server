@@ -10,13 +10,9 @@ class RegisterService {
     }
 
     *register(credential) {
-        let identity = lodash.find(credential.identities, ['type', 'email']);
 
-        identity.hashedPassword = yield this.hasher.hash(identity.password);
-
-        console.log ( identity );
-
-
+        // hash text password
+        credential.identities[0].password = yield this.hasher.hash(credential.identities[0].password);
         return yield this.credentialRepository.insert(credential);
     }
 }
