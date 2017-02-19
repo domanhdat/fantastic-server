@@ -4,6 +4,7 @@ const config          = require('./config');
 const nunjuckProvider = require('./shared/nunjuck.provider');
 const mongodbProvider = require('./shared/mongodb.provider');
 const errorProvider   = require('./shared/error.provider');
+const hasher          = require('./shared/hasher.provider');
 const bodyParser      = require('koa-bodyparser');
 
 
@@ -18,6 +19,7 @@ module.exports = (app) => {
     app.use(nunjuckProvider);
     app.use(mongodbProvider(config.database.mongodb));
     app.use(errorProvider);
+    app.use(hasher);
     app.use(ArticleServiceProvider);
     app.use(ProfileServiceProvider);
     app.use(AuthenticationProvider);

@@ -10,7 +10,8 @@ const config = {
     },
 
     authentication: {
-        tokenLength: 16
+        tokenLength: 16,
+        salt: 8
     }
 };
 
