@@ -13,6 +13,7 @@ class RegisterService {
 
         // hash text password
         credential.identities[0].password = yield this.hasher.hash(credential.identities[0].password);
+        credential.identities[0].secret = this.hasher.generateRandomKey();
         return yield this.credentialRepository.insert(credential);
     }
 }

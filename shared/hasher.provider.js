@@ -1,6 +1,7 @@
 "use strict";
 
 const bcrypt = require('bcryptjs');
+const rantoken = require("rand-token").suid;
 const config = require('./../config');
 
 class Hasher {
@@ -33,6 +34,15 @@ class Hasher {
                 resolve(result)
             })
         } )
+    }
+
+    /**
+     *
+     * @param length
+     * @return {*}
+     */
+    generateRandomKey(length) {
+        return rantoken( length || config.authentication.tokenLength || 16);
     }
 }
 

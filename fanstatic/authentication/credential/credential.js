@@ -54,6 +54,14 @@ class Credential {
         return this.attribute.active;
     }
 
+    set secret(secret) {
+        this.attribute.secret = secret;
+    }
+
+    get secret() {
+        return this.attribute.secret;
+    }
+
     set updatedAt(updatedAt) {
         this.attribute.updatedAt = updatedAt;
         return this;

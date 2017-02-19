@@ -56,7 +56,8 @@ class CredentialRepository {
         return CredentialFactory.buildOneFromDb(yield this.collection.find(
             {
                 "identities.email": email,
-                "identities.type": "email"
+                "identities.type": "email",
+                "active": true
             })
             .limit(1).toArray());
     }
