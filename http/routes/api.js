@@ -6,6 +6,9 @@ const middleware = require('./../middleware');
 // Authenticate
 router.post('/signin/email', controller.authController.signInByEmailAddress);
 
+// register
+router.post('/register', middleware.credentialNotExistedRequire, middleware.credentialProvider, controller.registerController.register);
+
 // article
 router.get('/article/:id', controller.articleController.getArticleByArticleId);
 router.post('/article', middleware.articleMiddleware.createArticleValidate, controller.articleController.saveArticle);

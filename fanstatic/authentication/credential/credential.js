@@ -4,7 +4,7 @@ class Credential {
 
     constructor () {
         this.attribute = {
-            activated: false,
+            active: false,
             identities: []
         };
     }
@@ -51,7 +51,7 @@ class Credential {
     }
 
     get active() {
-        return this.attribute.active = active;
+        return this.attribute.active;
     }
 
     set updatedAt(updatedAt) {

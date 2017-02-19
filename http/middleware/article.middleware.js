@@ -1,3 +1,5 @@
+"use strict";
+
 const articleValidate = require('./validate/article.validate');
 
 module.exports.createArticleValidate = function *(next) {

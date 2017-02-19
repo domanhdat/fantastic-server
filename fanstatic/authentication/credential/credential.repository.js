@@ -1,6 +1,7 @@
 "use strict";
 
 const ObjectId = require('mongodb').ObjectId;
+const CredentialFactory = require('./credential.factory');
 
 
 
@@ -9,11 +10,9 @@ class CredentialRepository {
     /**
      *
      * @param collection
-     * @param credentialFactory
      */
-    constructor(collection, credentialFactory) {
+    constructor(collection) {
         this.collection = collection;
-        this.credentialFactory = credentialFactory;
     }
 
     /**
@@ -22,7 +21,7 @@ class CredentialRepository {
      * @return Credential credential
      */
     *findById(id) {
-        return this.credentialFactory.buildOneFromDb(yield this.collection.find({_id: ObjectId(id)}).limit(1).toArray());
+        return CredentialFactory.buildOneFromDb(yield this.collection.find({_id: ObjectId(id)}).limit(1).toArray());
     }
 
     /**
@@ -30,12 +29,12 @@ class CredentialRepository {
      * @param credential
      */
     *insert(credential) {
-        yield this.collection.insert({
-            token: credential.token,
+        return yield this.collection.insert({
+            tokens: credential.tokens,
             createdAt: new Date().getTime(),
-            activated: credential.activated,
-            identity: credential.identity,
-
+            updatedAt: new Date().getTime(),
+            active: credential.active,
+            identities: credential.identities
         });
     }
 
@@ -45,7 +44,7 @@ class CredentialRepository {
      * @return Credential credential
      */
     *findByToken(token) {
-        return this.credentialFactory.buildOneFromDb(yield this.collection.find({tokens: token}).limit(1).toArray());
+        return CredentialFactory.buildOneFromDb(yield this.collection.find({tokens: token}).limit(1).toArray());
     }
 
     /**
@@ -54,7 +53,7 @@ class CredentialRepository {
      * @return Credential credential
      */
     *findByEmail(email) {
-        return this.credentialFactory.buildOneFromDb(yield this.collection.find({"identities.email" : email, "identities.type" : "email"}).limit(1).toArray());
+        return CredentialFactory.buildOneFromDb(yield this.collection.find({"identities.email" : email, "identities.type" : "email"}).limit(1).toArray());
     }
 
     /**
