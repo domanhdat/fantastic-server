@@ -1,5 +1,6 @@
 "use strict";
 
+const s3ServiceProvider = require('./shared/s3-service.provider');
 const config          = require('./config');
 const nunjuckProvider = require('./shared/nunjuck.provider');
 const mongodbProvider = require('./shared/mongodb.provider');
@@ -15,9 +16,9 @@ const AuthenticationProvider = require('./fanstatic/authentication/authenticate.
 
 module.exports = (app) => {
     app.context.config = config;
-    app.use(bodyParser());
     app.use(nunjuckProvider);
     app.use(mongodbProvider(config.database.mongodb));
+    app.use(s3ServiceProvider);
     app.use(errorProvider);
     app.use(hasher);
     app.use(ArticleServiceProvider);

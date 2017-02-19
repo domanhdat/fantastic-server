@@ -1,8 +1,8 @@
 "use strict";
 
-const Article = require('./article');
+const Image = require('./image');
 
-class ArticleFactory {
+class ImageFactory {
     
     constructor() {
     }
@@ -10,18 +10,15 @@ class ArticleFactory {
     /**
      *
      * @param rawData
-     * @returns {Article}
+     * @returns {Image}
      */
     buildOne(rawData = {}) {
-        return new Article()
+        return new Image()
             .setId(rawData['_id'])
-            .setContent(rawData['content'])
             .setImages(rawData['images'])
             .setProfile(rawData['profile'])
             .setLikeCount(rawData['likeCount'])
             .setCommentCount(rawData['commentCount'])
-            .setHashTags(rawData['hasTags'])
-            .setContentLink(rawData['contentLink'])
             .setShareCount(rawData['shareCount'])
             .setCreatedAt(rawData['createdAt'])
             .setUpdatedAt(rawData['updatedAt'])
@@ -38,4 +35,4 @@ class ArticleFactory {
     }
 }
 
-module.exports = ArticleFactory;
+module.exports = ImageFactory;

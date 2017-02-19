@@ -1,6 +1,6 @@
 "use strict";
 
-class Article {
+class Image {
     
     constructor() {
         this.attribute = {};
@@ -9,7 +9,7 @@ class Article {
     /**
      *
      * @param {ObjectID|string} id
-     * @returns {Article}
+     * @returns {Image}
      */
     setId(id) {
         this.attribute['_id'] = id;
@@ -25,26 +25,9 @@ class Article {
     }
     
     /**
-     * @param content
-     * @returns {Article}
-     */
-    setContent(content) {
-        this.attribute['content'] = content;
-        return this;
-    }
-    
-    /**
      *
-     * @returns {*}
-     */
-    getContent() {
-        return this.attribute['content'];
-    }
-    
-    /**
-     *
-     * @param {[Image]} images
-     * @returns {Article}
+     * @param images
+     * @returns {Image}
      */
     setImages(images) {
         this.attribute['images'] = images;
@@ -61,44 +44,8 @@ class Article {
     
     /**
      *
-     * @param {[]} hashTags
-     * @returns {Article}
-     */
-    setHashTags(hashTags) {
-        this.attribute['hashTags'] = hashTags;
-        return this;
-    }
-    
-    /**
-     *
-     * @returns {*}
-     */
-    getHashTags() {
-        return this.attribute['hashTags'];
-    }
-    
-    /**
-     *
-     * @param {[]} contentLink
-     * @returns {Article}
-     */
-    setContentLink(contentLink) {
-        this.attribute['contentLink'] = contentLink;
-        return this;
-    }
-    
-    /**
-     *
-     * @returns {*}
-     */
-    getContentLink() {
-        return this.attribute['contentLink'];
-    }
-    
-    /**
-     *
      * @param commentCount
-     * @returns {Article}
+     * @returns {Image}
      */
     setCommentCount(commentCount) {
         this.attribute['commentCount'] = commentCount;
@@ -116,7 +63,7 @@ class Article {
     /**
      *
      * @param likeCount
-     * @returns {Article}
+     * @returns {Image}
      */
     setLikeCount(likeCount) {
         this.attribute['likeCount'] = likeCount;
@@ -134,7 +81,7 @@ class Article {
     /**
      *
      * @param shareCount
-     * @returns {Article}
+     * @returns {Image}
      */
     setShareCount(shareCount) {
         this.attribute['shareCount'] = shareCount;
@@ -152,7 +99,7 @@ class Article {
     /**
      *
      * @param profile
-     * @returns {Article}
+     * @returns {Image}
      */
     setProfile(profile) {
         this.attribute['profile'] = profile;
@@ -170,7 +117,7 @@ class Article {
     /**
      *
      * @param createdAt
-     * @returns {Article}
+     * @returns {Image}
      */
     setCreatedAt(createdAt) {
         this.attribute['createdAt'] = createdAt;
@@ -188,7 +135,7 @@ class Article {
     /**
      *
      * @param updatedAt
-     * @returns {Article}
+     * @returns {Image}
      */
     setUpdatedAt(updatedAt) {
         this.attribute['updatedAt'] = updatedAt;
@@ -212,4 +159,4 @@ class Article {
     }
 }
 
-module.exports = Article;
+module.exports = Image;

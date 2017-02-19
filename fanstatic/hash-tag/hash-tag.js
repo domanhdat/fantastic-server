@@ -1,6 +1,6 @@
 "use strict";
 
-class ArticleShare {
+class HashTag {
     
     constructor() {
         this.attribute = {};
@@ -8,8 +8,8 @@ class ArticleShare {
     
     /**
      *
-     * @param id
-     * @returns {ArticleLike}
+     * @param {ObjectID|string} id
+     * @returns {HashTag}
      */
     setId(id) {
         this.attribute['_id'] = id;
@@ -18,20 +18,19 @@ class ArticleShare {
     
     /**
      *
-     * @param id
-     * @returns {*}
+     * @returns {*|{}}
      */
-    getId(id) {
+    getId() {
         return this.attribute['_id'];
     }
     
     /**
      *
-     * @param profileId
-     * @returns {ArticleLike}
+     * @param name
+     * @returns {HashTag}
      */
-    setProfileId(profileId) {
-        this.attribute['profileId'] = profileId;
+    setName(name) {
+        this.attribute['name'] = name;
         return this;
     }
     
@@ -39,32 +38,14 @@ class ArticleShare {
      *
      * @returns {*}
      */
-    getProfileId() {
-        return this.attribute['profileId'];
-    }
-    
-    /**
-     *
-     * @param articleId
-     * @returns {ArticleLike}
-     */
-    setArticleId(articleId) {
-        this.attribute['articleId'] = articleId;
-        return this;
-    }
-    
-    /**
-     *
-     * @returns {*}
-     */
-    getArticleId() {
-        return this.attribute['articleId'];
+    getName() {
+        return this.attribute['name'];
     }
     
     /**
      *
      * @param createdAt
-     * @returns {ArticleLike}
+     * @returns {HashTag}
      */
     setCreatedAt(createdAt) {
         this.attribute['createdAt'] = createdAt;
@@ -82,7 +63,7 @@ class ArticleShare {
     /**
      *
      * @param updatedAt
-     * @returns {ArticleLike}
+     * @returns {HashTag}
      */
     setUpdatedAt(updatedAt) {
         this.attribute['updatedAt'] = updatedAt;
@@ -106,4 +87,4 @@ class ArticleShare {
     }
 }
 
-module.exports = ArticleShare;
+module.exports = HashTag;

@@ -84,7 +84,7 @@ class ArticleLike {
      * @param updatedAt
      * @returns {ArticleLike}
      */
-    setUpdateddAt(updatedAt) {
+    setUpdatedAt(updatedAt) {
         this.attribute['updatedAt'] = updatedAt;
         return this;
     }
