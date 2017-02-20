@@ -1,17 +1,26 @@
-
-
 class ArticleDecorator {
     
     /**
      *
-     * @param {Article} article
-     * @param {Profile|{}} profile
-     * @returns {Article}
+     * @param {ArticleFactory} articleFactory
+     * @param {ImageFactory} imageFactory
+     * @param {ProfileFactory} profileFactory
      */
-    static decorate(article, profile) {
-        article.setProfile(profile);
-        article.setHashTags(ArticleDecorator.getHashTag(article.getContent()));
-        return article;
+    constructor(articleFactory, imageFactory, profileFactory) {
+        this.articleFactory = articleFactory;
+        this.imageFactory   = imageFactory;
+        this.profileFactory = profileFactory;
+    }
+    
+    /**
+     *
+     * @param {{}} body
+     */
+    static decorate(body) {
+//        article.setProfile(profile);
+//        article.setImages(images);
+//        article.setHashTags(ArticleDecorator.getHashTag(article.getContent()));
+//        return article;
     }
     
     /**

@@ -1,6 +1,6 @@
 "use strict";
 
-const ArticleShareRepository = require('./article-share.repository');
+const {ArticleShareRepository} = require('./inddex');
 
 module.exports = function *(next) {
     this.articleShareRepo = new ArticleShareRepository(this.mongo.collection('article-share'));

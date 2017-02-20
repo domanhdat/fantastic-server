@@ -20,19 +20,12 @@ router.post('/article', middleware.articleMiddleware.createArticleValidate, cont
 // upload
 router.get('/upload', middleware.uploadMiddleware.createUploadUrlValidate, controller.uploadController.getUploadUrl);
 
-// user
-router.get('/test', function *() {
-    yield this.profileRepo.save({username: 'dat', password: 123456});
-    this.body = yield this.profileRepo.findAll();
-});
-
-
-/**
+/*
  * GET PROFILE
  */
 router.get('/profile/:id', controller.profileController.getProfile);
 
-/**
+/*
  * UPDATE PROFILE
  */
 router.put('/profile/:id', controller.profileController.updateProfile);

@@ -4,9 +4,6 @@ const Image = require('./image');
 
 class ImageFactory {
     
-    constructor() {
-    }
-    
     /**
      *
      * @param rawData
@@ -15,7 +12,7 @@ class ImageFactory {
     buildOne(rawData = {}) {
         return new Image()
             .setId(rawData['_id'])
-            .setImages(rawData['images'])
+            .setPath(rawData['path'])
             .setProfile(rawData['profile'])
             .setLikeCount(rawData['likeCount'])
             .setCommentCount(rawData['commentCount'])

@@ -4,18 +4,20 @@ class ImageReader {
     
     /**
      *
-     * @param {Article} article
+     * @param {Image} image
      */
-    read(article) {
+    read(image) {
         return {
-            _id         : article.getId(),
-            images      : article.getImages(),
-            commentCount: article.getCommentCount(),
-            likeCount   : article.getLikeCount(),
-            shareCount  : article.getShareCount(),
-            profile     : article.getProfile(),
-            createdAt   : article.getCreatedAt() || moment().unix(),
+            _id         : image.getId(),
+            url         : image.getImages(),
+            commentCount: image.getCommentCount(),
+            likeCount   : image.getLikeCount(),
+            shareCount  : image.getShareCount(),
+            profile     : image.getProfile(),
+            createdAt   : image.getCreatedAt() || moment().unix(),
             updatedAt   : moment().unix(),
+            deletedAt   : image.getDeletedAt(),
+            bandAt      : image.getBandAt(),
         };
     }
     

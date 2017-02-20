@@ -9,6 +9,7 @@ module.exports.createArticleValidate = function *(next) {
         this.body   = this.errors;
         return;
     }
+    this.state.images  = this.imageFactory.buildMany(this.request.body.images);
     this.state.article = this.articleFactory.buildOne(this.request.body);
     yield next;
 };

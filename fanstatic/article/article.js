@@ -205,6 +205,42 @@ class Article {
     
     /**
      *
+     * @param deletedAt
+     * @returns {Article}
+     */
+    setDeletedAt(deletedAt) {
+        this.attribute['deletedAt'] = deletedAt;
+        return this;
+    }
+    
+    /**
+     *
+     * @returns {*}
+     */
+    getDeletedAt() {
+        return this.attribute['deletedAt'];
+    }
+    
+    /**
+     *
+     * @param bandAt
+     * @returns {Article}
+     */
+    setBandAt(bandAt) {
+        this.attribute['bandAt'] = bandAt;
+        return this;
+    }
+    
+    /**
+     *
+     * @returns {*}
+     */
+    getBandAt() {
+        return this.attribute['bandAt'];
+    }
+    
+    /**
+     *
      * @returns {{}|*}
      */
     toJson() {

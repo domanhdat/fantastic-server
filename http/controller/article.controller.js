@@ -1,15 +1,20 @@
 "use strict";
 
-module.exports.getArticleByArticleId = function *() {
+exports.getArticleByArticleId = function *() {
     this.body = (yield this.articleRepo.findById(this.params.id)).toJson();
 };
 
-module.exports.saveArticle = function *() {
-    const article = this.articleDecorator.decorate(this.state.article, {});
-    this.body     = yield this.articleRepo.save(article);
+exports.saveArticle = function *() {
+    try {
+        const article = this.articleDecorator.decorate(this.request.body);
+        this.body     = yield this.articleRepo.save(article);
+    } catch (e) {
+        this.status = 500;
+        this.body   = e;
+    }
 };
 
-module.exports.updateArticle = function *() {
-    const article = this.articleDecorator.decorate(this.state.article, {});
-    this.body     = yield this.articleRepo.update(article);
+exports.updateArticle = function *() {
+//    const article = this.articleDecorator.decorate(this.state.article, {});
+//    this.body     = yield this.articleRepo.update(article);
 };

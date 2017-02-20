@@ -26,11 +26,11 @@ class Image {
     
     /**
      *
-     * @param images
+     * @param path
      * @returns {Image}
      */
-    setImages(images) {
-        this.attribute['images'] = images;
+    setPath(path) {
+        this.attribute['path'] = path;
         return this;
     }
     
@@ -38,8 +38,8 @@ class Image {
      *
      * @returns {*}
      */
-    getImages() {
-        return this.attribute['images'];
+    getPath() {
+        return this.attribute['path'];
     }
     
     /**
@@ -148,6 +148,42 @@ class Image {
      */
     getUpdatedAt() {
         return this.attribute['updatedAt'];
+    }
+    
+    /**
+     *
+     * @param deletedAt
+     * @returns {Image}
+     */
+    setDeletedAt(deletedAt) {
+        this.attribute['deletedAt'] = deletedAt;
+        return this;
+    }
+    
+    /**
+     *
+     * @returns {*}
+     */
+    getDeletedAt() {
+        return this.attribute['deletedAt'];
+    }
+    
+    /**
+     *
+     * @param bandAt
+     * @returns {Image}
+     */
+    setBandAt(bandAt) {
+        this.attribute['bandAt'] = bandAt;
+        return this;
+    }
+    
+    /**
+     *
+     * @returns {*}
+     */
+    getBandAt() {
+        return this.attribute['bandAt'];
     }
     
     /**

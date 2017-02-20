@@ -1,6 +1,6 @@
 "use strict";
 
-const Article = require('./article');
+const {Article} = require('./index');
 
 class ArticleFactory {
     
@@ -25,6 +25,8 @@ class ArticleFactory {
             .setShareCount(rawData['shareCount'])
             .setCreatedAt(rawData['createdAt'])
             .setUpdatedAt(rawData['updatedAt'])
+            .setDeletedAt(rawData['deletedAt'])
+            .setBandAt(rawData['bandAt'])
             ;
     }
     

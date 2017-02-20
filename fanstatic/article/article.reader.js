@@ -26,6 +26,8 @@ class ArticleReader {
             shareCount  : article.getShareCount(),
             profile     : article.getProfile(),
             createdAt   : article.getCreatedAt() || moment().unix(),
+            deletedAt   : article.getDeletedAt(),
+            bandAt      : article.getBandAt(),
             updatedAt   : moment().unix(),
         };
     }
