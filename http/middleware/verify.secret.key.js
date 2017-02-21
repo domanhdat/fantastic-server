@@ -5,16 +5,18 @@ module.exports = function *( next ) {
     const registerService = this.registerService;
 
     if ( ! secretKey) {
-        this.body = {
+        this.status = 400;
+        return this.body = {
             code: "REGISTER_SERVICE_ERROR",
             message: "secret key is required"
         }
     }
 
     if (! registerService.verifySecretKey(secretKey)) {
-        this.body = {
+        this.status = 401;
+        return this.body = {
             code: "REGISTER_SERVICE_ERROR",
-            message: "secret key is malfom"
+            message: "secret key is malformed"
         }
     }
 
