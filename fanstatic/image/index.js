@@ -2,7 +2,7 @@
 
 module.exports = {
     Image               : require('./image'),
-    imageReader         : require('./image.reader'),
+    ImageReader         : require('./image.reader'),
     ImageFactory        : require('./image.factory'),
     ImageServiceProvider: require('./image.service-provider'),
 };

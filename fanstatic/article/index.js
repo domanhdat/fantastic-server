@@ -1,10 +1,8 @@
 "use strict";
 
-module.exports = {
-    Article               : require('./article'),
-    ArticleReader         : require('./article.reader'),
-    ArticleFactory        : require('./article.factory'),
-    ArticleDecorator      : require('./article.decorator'),
-    ArticleRepository     : require('./article.repository'),
-    ArticleServiceProvider: require('./article.service-provider'),
-};
+exports.Article = require('./article');
+exports.ArticleReader = require('./article.reader');
+exports.ArticleFactory = require('./article.factory');
+exports.ArticleRepository = require('./article.repository');
+exports.ArticleDecorator = require('./article.decorator');
+exports.ArticleServiceProvider = require('./article.service-provider');
