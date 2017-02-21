@@ -77,6 +77,13 @@ class CredentialRepository {
             }
         );
     }
+
+    *findBySecret(secret) {
+        return yield this.collection.find({
+            secret: secret,
+            active: false
+        }).limit(1).toArray();
+    }
 }
 
 module.exports = CredentialRepository;

@@ -9,7 +9,8 @@ router.post('/signin/email', middleware.credentialExistedRequire, controller.aut
 // register
 router.post('/sign-up', middleware.credentialNotExistedRequire, middleware.credentialProvider, controller.registerController.register);
 
-// router.get('/signup/validate/:secret', controller.registerController.active);
+// active account
+router.post('/sign-up/active', middleware.verifySecretKey, controller.registerController.active);
 
 // article
 router.get('/article/:id', controller.articleController.getArticleByArticleId);

@@ -17,6 +17,16 @@ class RegisterService {
         credential.secret = this.hasher.generateRandomKey();
         return yield this.credentialRepository.insert(credential);
     }
+
+    *verifySecretKey(secret) {
+        const credentialFounded =  this.credentialRepository.findBySecret(secret);
+
+        if (credentialFounded.length > 0) {
+            return false
+        }
+
+        return true
+    }
 }
 
 module.exports = RegisterService;
