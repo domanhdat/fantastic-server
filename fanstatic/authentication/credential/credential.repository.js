@@ -34,7 +34,8 @@ class CredentialRepository {
             createdAt: new Date().getTime(),
             updatedAt: new Date().getTime(),
             active: credential.active,
-            identities: credential.identities
+            identities: credential.identities,
+            secret: credential.secret
         });
     }
 
@@ -52,12 +53,11 @@ class CredentialRepository {
      * @param email
      * @return Credential credential
      */
-    *findByEmail(email) {
+    *findAllByEmail(email) {
         return CredentialFactory.buildOneFromDb(yield this.collection.find(
             {
                 "identities.email": email,
-                "identities.type": "email",
-                "active": true
+                "identities.type": "email"
             })
             .limit(1).toArray());
     }

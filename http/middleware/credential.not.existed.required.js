@@ -4,7 +4,7 @@ module.exports = function *( next ) {
 
     const email = this.request.body.email;
 
-    const founded = yield this.credentialRepository.findByEmail(email);
+    const founded = yield this.credentialRepository.findAllByEmail(email);
 
     if (!!founded) {
         return this.body = {
