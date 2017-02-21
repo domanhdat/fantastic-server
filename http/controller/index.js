@@ -1,9 +1,7 @@
 "use strict";
 
-module.exports = {
-    articleController: require('./article.controller'),
-    profileController: require('./profile.controller'),
-    authController   : require('./auth.controller'),
-    registerController: require('./register.controller'),
-    uploadController : require('./upload.controller')
-};
+exports.articleController = require('./article.controller');
+exports.profileController = require('./profile.controller');
+exports.authController = require('./auth.controller');
+exports.registerController = require('./register.controller');
+exports.uploadController = require('./upload.controller');
