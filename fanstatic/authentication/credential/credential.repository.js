@@ -78,11 +78,30 @@ class CredentialRepository {
         );
     }
 
+    /**
+     *
+     * @param secret
+     * @return {Credential}
+     */
     *findBySecret(secret) {
-        return yield this.collection.find({
+        return CredentialFactory.buildOneFromDb(yield this.collection.find({
             secret: secret,
             active: false
-        }).limit(1).toArray();
+        }).limit(1).toArray())
+    }
+
+    /**
+     *
+     * @param {Credential} credential
+     */
+    *updateActive(credential) {
+        yield this.collection.update(
+            {   _id: ObjectId(credential.id) },
+            {
+                active: credential.active,
+                updatedAt: new Date().getTime()
+            }
+        )
     }
 }
 

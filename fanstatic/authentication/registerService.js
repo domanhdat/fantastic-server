@@ -27,6 +27,16 @@ class RegisterService {
 
         return true
     }
+
+    /**
+     *
+     * @param {Credential} credential
+     */
+    *active(credential) {
+        credential.active = true;
+        console.log ( credential );
+        yield this.credentialRepository.updateActive(credential);
+    }
 }
 
 module.exports = RegisterService;

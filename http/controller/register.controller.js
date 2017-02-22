@@ -18,14 +18,14 @@ exports.register = function *(next) {
 exports.active = function *( next ) {
     try {
         const registerService = this.registerService;
-        yield registerService.active(this.request.body.secret);
+        yield registerService.active(this.request.credential);
 
         this.body = {
             code: "REGISTER_SERVICE_SUCCESS",
             message: "active success"
         }
-
     } catch (error) {
-        yield next(error);
+        console.log ( error );
+        yield next;
     }
 };
