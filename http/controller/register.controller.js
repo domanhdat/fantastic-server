@@ -18,7 +18,7 @@ exports.register = function *(next) {
 exports.active = function *( next ) {
     try {
         const registerService = this.registerService;
-        yield registerService.active(this.request.credential);
+        yield registerService.active(this.request.body.secret);
 
         this.body = {
             code: "REGISTER_SERVICE_SUCCESS",

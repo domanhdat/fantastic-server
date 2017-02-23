@@ -2,7 +2,7 @@
 
 module.exports = function *( next ) {
 
-    const credentialFounded = yield this.credentialRepository.findByEmail(this.request.body['email']);
+    const credentialFounded = yield this.credentialRepository.findAllByEmail(this.request.body['email']);
 
     if ( ! credentialFounded) {
         this.status = 400;

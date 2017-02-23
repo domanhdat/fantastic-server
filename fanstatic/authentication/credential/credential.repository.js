@@ -56,8 +56,17 @@ class CredentialRepository {
     *findAllByEmail(email) {
         return CredentialFactory.buildOneFromDb(yield this.collection.find(
             {
+                "identities.email": email
+            })
+            .limit(1).toArray());
+    }
+
+
+    *findActivedByEmail(email) {
+        return CredentialFactory.buildOneFromDb(yield this.collection.find(
+            {
                 "identities.email": email,
-                "identities.type": "email"
+                active: true
             })
             .limit(1).toArray());
     }

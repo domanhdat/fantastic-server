@@ -20,15 +20,17 @@ class RegisterService {
 
     *verifySecretKey(secret) {
         if (!secret) return false;
-        return !!(yield this.credentialRepository.findBySecret(secret));
+        return yield this.credentialRepository.findBySecret(secret);
     }
 
     /**
      *
-     * @param {Credential} credential
+     * @param secret
      */
-    *active(credential) {
+    *active(secret) {
+        let credential = yield this.credentialRepository.findBySecret(secret);
         credential.active = true;
+
         yield this.credentialRepository.updateActive(credential);
     }
 }
