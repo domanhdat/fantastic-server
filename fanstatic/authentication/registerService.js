@@ -19,13 +19,8 @@ class RegisterService {
     }
 
     *verifySecretKey(secret) {
-        const credentialFounded =  this.credentialRepository.findBySecret(secret);
-
-        if (credentialFounded.length > 0) {
-            return false
-        }
-
-        return true
+        if (!secret) return false;
+        return !!(yield this.credentialRepository.findBySecret(secret));
     }
 
     /**
@@ -34,7 +29,6 @@ class RegisterService {
      */
     *active(credential) {
         credential.active = true;
-        console.log ( credential );
         yield this.credentialRepository.updateActive(credential);
     }
 }

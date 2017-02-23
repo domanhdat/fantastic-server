@@ -12,7 +12,7 @@ module.exports = function *( next ) {
         }
     }
 
-    if (! registerService.verifySecretKey(secretKey)) {
+    if ( ! (yield registerService.verifySecretKey(secretKey))) {
         this.status = 401;
         return this.body = {
             code: "REGISTER_SERVICE_ERROR",
