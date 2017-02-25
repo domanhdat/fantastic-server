@@ -14,7 +14,7 @@ class Hasher {
      */
     compare(text, hashedText) {
         return new Promise((resolve, reject) => {
-            bcrypt.compare(text, hashedText, function (error, result) {
+            return bcrypt.compare(text, hashedText, function (error, result) {
                 if (error) return reject(error);
                 resolve(result);
             })

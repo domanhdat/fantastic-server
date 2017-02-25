@@ -62,7 +62,7 @@ class CredentialRepository {
     }
 
 
-    *findActivedByEmail(email) {
+    *findActiveByEmail(email) {
         return CredentialFactory.buildOneFromDb(yield this.collection.find(
             {
                 "identities.email": email,
@@ -78,7 +78,6 @@ class CredentialRepository {
      * @return {*}
      */
     *updateWithNewToken(credential, token) {
-
         return yield this.collection.update(
             { _id: ObjectId(credential.id) },
             {
@@ -107,8 +106,10 @@ class CredentialRepository {
         yield this.collection.update(
             {   _id: ObjectId(credential.id) },
             {
-                active: credential.active,
-                updatedAt: new Date().getTime()
+                $set: {
+                    active: credential.active,
+                    updatedAt: new Date().getTime()
+                }
             }
         )
     }

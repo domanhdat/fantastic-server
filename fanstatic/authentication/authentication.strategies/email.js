@@ -18,18 +18,23 @@ class EmailAuthenticationStrategy {
      */
     *authenticate(credential) {
 
-        let identity = lodash.find(credential.identities, {'type': 'email', 'email': credential['email']});
+        let credentialFounded = yield this.credentialRepository.findActiveByEmail(credential.email);
+
+        let identity = lodash.find(credentialFounded.identities, { "type": "email", "email": credential.email});
 
         /**
          * compare password failed
          */
-        if ( ! (this.hasher.compare(credential['textPassword'], identity['hashedPassword']))) {
-            throw new Error('Password is incorrect');
+        if ( ! (yield this.hasher.compare(credential["password"], identity["password"]))) {
+
+            return false;
         }
+
+        let token = this.hasher.generateRandomKey(config.authentication.tokenLength);
 
         yield this.credentialRepository.updateWithNewToken(credentialFounded, token);
 
-        return {generatedToken: token};
+        return {token: token};
     }
 }
 

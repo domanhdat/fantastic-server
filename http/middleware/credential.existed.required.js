@@ -2,7 +2,7 @@
 
 module.exports = function *( next ) {
 
-    const credentialFounded = yield this.credentialRepository.findAllByEmail(this.request.body['email']);
+    const credentialFounded = yield this.credentialRepository.findActiveByEmail(this.request.body['email']);
 
     if ( ! credentialFounded) {
         this.status = 400;
@@ -11,8 +11,6 @@ module.exports = function *( next ) {
             "message": "credential not existed"
         }
     }
-
-    this.request.credential = credentialFounded;
 
     yield next;
 };

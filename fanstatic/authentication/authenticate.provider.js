@@ -15,7 +15,7 @@ module.exports = function * ( next ) {
 
     let authenticateStrategyProvider = new AuthenticateStrategiesProvider ();
 
-    authenticateStrategyProvider.register ( new EmailAuthenticateStrategy ( this.credentialRepository ) );
+    authenticateStrategyProvider.register ( new EmailAuthenticateStrategy ( this.credentialRepository, this.hasher ) );
     authenticateStrategyProvider.register ( new TokenAuthenticateStrategy ( this.credentialRepository ) );
 
     this.authenticateStrategyProvider = authenticateStrategyProvider;
