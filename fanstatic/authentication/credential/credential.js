@@ -3,7 +3,7 @@
 class Credential {
 
     constructor () {
-        this.attribute = {
+        this.attributes = {
             active: false,
             identities: [],
             tokens: [],
@@ -16,14 +16,14 @@ class Credential {
      * @param {int} id
      */
     set id(id) {
-        this.attribute.id = id;
+        this.attributes.id = id;
     }
 
     /**
      * @return {int} id
      */
     get id() {
-        return this.attribute.id;
+        return this.attributes.id;
     }
 
     /**
@@ -31,7 +31,7 @@ class Credential {
      * @param {Array} tokens
      */
     set tokens(tokens) {
-        this.attribute.tokens = tokens;
+        this.attributes.tokens = tokens;
     }
 
     /**
@@ -39,7 +39,7 @@ class Credential {
      * @return {Array}
      */
     get tokens() {
-        return this.attribute.tokens;
+        return this.attributes.tokens;
     }
 
     /**
@@ -47,7 +47,7 @@ class Credential {
       * @param {Array} identities
      */
     set identities(identities) {
-        this.attribute.identities = identities;
+        this.attributes.identities = identities;
     }
 
     /**
@@ -55,7 +55,7 @@ class Credential {
      * @return {Array}
      */
     get identities() {
-        return this.attribute.identities;
+        return this.attributes.identities;
     }
 
     /**
@@ -63,14 +63,14 @@ class Credential {
      * @param createdAt
      */
     set createdAt(createdAt) {
-        this.attribute.creatorAt = createdAt;
+        this.attributes.creatorAt = createdAt;
     }
 
     /**
      * timeStamp
      */
     get createdAt() {
-        return this.attribute.createdAt;
+        return this.attributes.createdAt;
     }
 
     /**
@@ -78,7 +78,7 @@ class Credential {
      * @param {boolean} active
      */
     set active(active) {
-        this.attribute.active = active;
+        this.attributes.active = active;
     }
 
     /**
@@ -86,7 +86,7 @@ class Credential {
      * @return {boolean}
      */
     get active() {
-        return this.attribute.active;
+        return this.attributes.active;
     }
 
     /**
@@ -94,7 +94,7 @@ class Credential {
      * @param {string} secret
      */
     set secret(secret) {
-        this.attribute.secret = secret;
+        this.attributes.secret = secret;
     }
 
     /**
@@ -102,7 +102,7 @@ class Credential {
      * @return {string} secret
      */
     get secret() {
-        return this.attribute.secret;
+        return this.attributes.secret;
     }
 
     /**
@@ -110,14 +110,14 @@ class Credential {
      * @param updatedAt
      */
     set updatedAt(updatedAt) {
-        this.attribute.updatedAt = updatedAt;
+        this.attributes.updatedAt = updatedAt;
     }
 
     /**
      * timeStamp
      */
     get updatedAt() {
-        return this.attribute.updatedAt;
+        return this.attributes.updatedAt;
     }
 }
 

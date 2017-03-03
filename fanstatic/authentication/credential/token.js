@@ -3,7 +3,7 @@
 class Token {
 
     constructor () {
-        this.attribute = {
+        this.attributes = {
             createdAt: new Date().getTime(),
             updatedAt: null,
             token: null
@@ -11,27 +11,27 @@ class Token {
     }
 
     get createdAt() {
-        return this.attribute.createdAt;
+        return this.attributes.createdAt;
     }
 
     set updatedAt(value) {
-        this.attribute.updatedAt = value;
+        this.attributes.updatedAt = value;
     }
 
     get updatedAt() {
-        return this.attribute.updatedAt;
+        return this.attributes.updatedAt;
     }
 
     set token(value) {
-        this.attribute.token = value;
+        this.attributes.token = value;
     }
 
     get token() {
-        return this.attribute.token;
+        return this.attributes.token;
     }
 
     toJson() {
-        return this.attribute;
+        return this.attributes;
     }
 }
 
