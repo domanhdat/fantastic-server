@@ -10,6 +10,10 @@ class Token {
         }
     }
 
+    set createdAt(value) {
+        this.attributes.createdAt = value;
+    }
+
     get createdAt() {
         return this.attributes.createdAt;
     }

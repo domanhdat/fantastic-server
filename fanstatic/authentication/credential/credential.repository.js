@@ -22,7 +22,14 @@ class CredentialRepository {
      * @return Credential credential
      */
     *findById(id) {
-        return this.credentialBuilder.buildOneFromDb(yield this.collection.find({_id: ObjectId(id)}).limit(1).toArray());
+
+        let document = yield this.collection.find({_id: ObjectId(id)}).limit(1);
+
+        if (!document) {
+            return null;
+        }
+
+        return this.credentialBuilder.buildOneFromDb(document);
     }
 
     /**
