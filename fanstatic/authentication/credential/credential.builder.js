@@ -4,6 +4,10 @@ const Credential = require('./credential');
 
 class CredentialBuilder {
 
+    constructor (credential) {
+        this.credential = credential;
+    }
+
     buildOneFromDb(rawData) {
         if ( ! (rawData.length > 0)) {
             return null

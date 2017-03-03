@@ -4,17 +4,19 @@
 class CredentialReader {
 
     /**
+     * read Credential object and build a document
      *
      * @param {Credential} credential
      * @return {{$push: {}}}
      */
     read(credential) {
         let document = {
-            $push: {}
+            $push: {},
+            active: false
         };
 
-        if (!!credential.active) {
-           document.active = credential.active;
+        if (credential.active) {
+           document.active = true;
         }
 
         if (!!credential.tokens && credential.tokens.length > 0) {
@@ -27,6 +29,8 @@ class CredentialReader {
 
         if (!!credential.createdAt) {
             document.createdAt = credential.createdAt;
+        } else {
+            document.createdAt = new Date().getTime()
         }
 
         if (!!credential.secret) {
@@ -35,6 +39,8 @@ class CredentialReader {
 
         if (!!credential.updatedAt) {
             document.updatedAt = credential.updatedAt;
+        } else {
+            document.updatedAt = new Date().getTime()
         }
 
         return document;

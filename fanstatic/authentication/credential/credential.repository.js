@@ -22,7 +22,7 @@ class CredentialRepository {
      * @return Credential credential
      */
     *findById(id) {
-        return this.credentialFactory.buildOneFromDb(yield this.collection.find({_id: ObjectId(id)}).limit(1).toArray());
+        return this.credentialBuilder.buildOneFromDb(yield this.collection.find({_id: ObjectId(id)}).limit(1).toArray());
     }
 
     /**
@@ -30,14 +30,8 @@ class CredentialRepository {
      * @param credential
      */
     *insert(credential) {
-        return yield this.collection.insert({
-            tokens: credential.tokens,
-            createdAt: new Date().getTime(),
-            updatedAt: new Date().getTime(),
-            active: credential.active,
-            identities: credential.identities,
-            secret: credential.secret
-        });
+        const document = this.credentialReader.read(credential);
+        return yield this.collection.insert(document);
     }
 
     /**
@@ -46,7 +40,7 @@ class CredentialRepository {
      * @return Credential credential
      */
     *findByToken(token) {
-        return this.credentialFactory.buildOneFromDb(yield this.collection.find({tokens: token}).limit(1).toArray());
+        return this.credentialBuilder.buildOneFromDb(yield this.collection.find({tokens: token}).limit(1).toArray());
     }
 
     /**
@@ -55,7 +49,7 @@ class CredentialRepository {
      * @return Credential credential
      */
     *findAllByEmail(email) {
-        return this.credentialFactory.buildOneFromDb(yield this.collection.find(
+        return this.credentialBuilder.buildOneFromDb(yield this.collection.find(
             {
                 "identities.email": email
             })
@@ -64,7 +58,7 @@ class CredentialRepository {
 
 
     *findActiveByEmail(email) {
-        return this.credentialFactory.buildOneFromDb(yield this.collection.find(
+        return this.credentialBuilder.buildOneFromDb(yield this.collection.find(
             {
                 "identities.email": email,
                 active: true
@@ -93,7 +87,7 @@ class CredentialRepository {
      * @return {Credential}
      */
     *findBySecret(secret) {
-        return this.credentialFactory.buildOneFromDb(yield this.collection.find({
+        return this.credentialBuilder.buildOneFromDb(yield this.collection.find({
             secret: secret,
             active: false
         }).limit(1).toArray())
