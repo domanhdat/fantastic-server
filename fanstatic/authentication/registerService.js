@@ -31,7 +31,7 @@ class RegisterService {
         let credential = yield this.credentialRepository.findBySecret(secret);
         credential.active = true;
 
-        yield this.credentialRepository.updateActive(credential);
+        yield this.credentialRepository.update(credential);
     }
 }
 

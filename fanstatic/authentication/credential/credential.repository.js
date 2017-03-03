@@ -1,18 +1,19 @@
 "use strict";
 
 const ObjectId = require('mongodb').ObjectId;
-const CredentialFactory = require('./credential.factory');
-
-
 
 class CredentialRepository {
 
     /**
      *
      * @param collection
+     * @param {CredentialBuilder} credentialBuilder
+     * @param {CredentialReader} credentialReader
      */
-    constructor(collection) {
+    constructor(collection, credentialBuilder, credentialReader) {
         this.collection = collection;
+        this.credentialBuilder = credentialBuilder;
+        this.credentialReader = credentialReader;
     }
 
     /**
@@ -21,7 +22,7 @@ class CredentialRepository {
      * @return Credential credential
      */
     *findById(id) {
-        return CredentialFactory.buildOneFromDb(yield this.collection.find({_id: ObjectId(id)}).limit(1).toArray());
+        return this.credentialFactory.buildOneFromDb(yield this.collection.find({_id: ObjectId(id)}).limit(1).toArray());
     }
 
     /**
@@ -45,7 +46,7 @@ class CredentialRepository {
      * @return Credential credential
      */
     *findByToken(token) {
-        return CredentialFactory.buildOneFromDb(yield this.collection.find({tokens: token}).limit(1).toArray());
+        return this.credentialFactory.buildOneFromDb(yield this.collection.find({tokens: token}).limit(1).toArray());
     }
 
     /**
@@ -54,7 +55,7 @@ class CredentialRepository {
      * @return Credential credential
      */
     *findAllByEmail(email) {
-        return CredentialFactory.buildOneFromDb(yield this.collection.find(
+        return this.credentialFactory.buildOneFromDb(yield this.collection.find(
             {
                 "identities.email": email
             })
@@ -63,7 +64,7 @@ class CredentialRepository {
 
 
     *findActiveByEmail(email) {
-        return CredentialFactory.buildOneFromDb(yield this.collection.find(
+        return this.credentialFactory.buildOneFromDb(yield this.collection.find(
             {
                 "identities.email": email,
                 active: true
@@ -92,7 +93,7 @@ class CredentialRepository {
      * @return {Credential}
      */
     *findBySecret(secret) {
-        return CredentialFactory.buildOneFromDb(yield this.collection.find({
+        return this.credentialFactory.buildOneFromDb(yield this.collection.find({
             secret: secret,
             active: false
         }).limit(1).toArray())
@@ -102,14 +103,14 @@ class CredentialRepository {
      *
      * @param {Credential} credential
      */
-    *updateActive(credential) {
+    *update(credential) {
+
+        const document = this.credentialReader.read(credential);
+
         yield this.collection.update(
             {   _id: ObjectId(credential.id) },
             {
-                $set: {
-                    active: credential.active,
-                    updatedAt: new Date().getTime()
-                }
+                $set: document
             }
         )
     }

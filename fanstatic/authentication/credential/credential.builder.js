@@ -2,9 +2,9 @@
 
 const Credential = require('./credential');
 
-class CredentialFactory {
+class CredentialBuilder {
 
-    static buildOneFromDb(rawData) {
+    buildOneFromDb(rawData) {
         if ( ! (rawData.length > 0)) {
             return null
         }
@@ -21,7 +21,7 @@ class CredentialFactory {
         return credential;
     }
 
-    static buildFromRequest(rawData) {
+    buildFromRequest(rawData) {
 
         let credential = new Credential();
 
@@ -37,4 +37,4 @@ class CredentialFactory {
     }
 }
 
-module.exports = CredentialFactory;
+module.exports = CredentialBuilder;

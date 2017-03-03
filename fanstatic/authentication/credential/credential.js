@@ -5,68 +5,113 @@ class Credential {
     constructor () {
         this.attribute = {
             active: false,
-            identities: []
+            identities: [],
+            tokens: [],
+            secret: ""
         };
     }
 
+    /**
+     *
+     * @param id
+     */
     set id(id) {
         this.attribute.id = id;
-        return this;
     }
 
+    /**
+     *
+     */
     get id() {
         return this.attribute.id;
     }
 
+    /**
+     *
+     * @param tokens
+     */
     set tokens(tokens) {
         this.attribute.tokens = tokens;
-        return this;
     }
 
     get tokens() {
         return this.attribute.tokens;
     }
 
+    /**
+     *
+      * @param {Array} identities
+     */
     set identities(identities) {
         this.attribute.identities = identities;
-        return this;
     }
 
+    /**
+     *
+     * @return {Array}
+     */
     get identities() {
         return this.attribute.identities;
     }
 
+    /**
+     *
+     * @param createdAt
+     */
     set createdAt(createdAt) {
         this.attribute.creatorAt = createdAt;
-        return this;
     }
 
+    /**
+     * timeStamp
+     */
     get createdAt() {
         return this.attribute.createdAt;
     }
 
+    /**
+     *
+     * @param {boolean} active
+     */
     set active(active) {
         this.attribute.active = active;
-        return this;
     }
 
+    /**
+     *
+     * @return {boolean}
+     */
     get active() {
         return this.attribute.active;
     }
 
+    /**
+     *
+     * @param {string} secret
+     */
     set secret(secret) {
         this.attribute.secret = secret;
     }
 
+    /**
+     *
+     * @return {string} secret
+     */
     get secret() {
         return this.attribute.secret;
     }
 
+    /**
+     *
+     * @param updatedAt
+     */
     set updatedAt(updatedAt) {
         this.attribute.updatedAt = updatedAt;
-        return this;
     }
 
+    /**
+     *
+     */
     get updatedAt() {
         return this.attribute.updatedAt;
     }
