@@ -13,14 +13,14 @@ class Credential {
 
     /**
      *
-     * @param id
+     * @param {int} id
      */
     set id(id) {
         this.attribute.id = id;
     }
 
     /**
-     *
+     * @return {int} id
      */
     get id() {
         return this.attribute.id;
@@ -28,12 +28,16 @@ class Credential {
 
     /**
      *
-     * @param tokens
+     * @param {Array} tokens
      */
     set tokens(tokens) {
         this.attribute.tokens = tokens;
     }
 
+    /**
+     *
+     * @return {Array}
+     */
     get tokens() {
         return this.attribute.tokens;
     }
@@ -110,7 +114,7 @@ class Credential {
     }
 
     /**
-     *
+     * timeStamp
      */
     get updatedAt() {
         return this.attribute.updatedAt;
