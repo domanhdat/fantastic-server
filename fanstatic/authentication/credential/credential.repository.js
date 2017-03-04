@@ -53,14 +53,10 @@ class CredentialRepository {
     /**
      *
      * @param email
-     * @return Credential credential
+     * @return {boolean}
      */
-    *findAllByEmail(email) {
-        return this.credentialBuilder.buildOneFromDb(yield this.collection.find(
-            {
-                "identities.email": email
-            })
-            .limit(1).toArray());
+    *existedWithEmail(email) {
+        return (yield this.collection.find ( { "identities.email" : email } ).count()) > 0;
     }
 
 
