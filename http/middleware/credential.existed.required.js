@@ -2,9 +2,7 @@
 
 module.exports = function *( next ) {
 
-    const credentialFounded = yield this.credentialRepository.findActiveByEmail(this.request.body['email']);
-
-    if ( ! credentialFounded) {
+    if (yield this.credentialRepository.existedActiveWithEmail(this.request.body['email'])) {
         this.status = 400;
         return this.body = {
             "code": "AUTHENTICATE_ERROR",

@@ -20,7 +20,11 @@ const config = {
 
     authentication: {
         tokenLength: 16,
-        salt: 8
+        salt: 8,
+        passwordLength: {
+            min: 3,
+            max: 40
+        }
     }
 };
 
