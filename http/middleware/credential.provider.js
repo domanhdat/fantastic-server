@@ -2,6 +2,6 @@
 
 module.exports = function *( next ) {
 
-    this.request.credential = this.CredentialFactory.buildFromRequest(this.request.body);
+    this.request.credential = this.buildFromRequest(this.request.body);
     yield next;
 };
