@@ -7,7 +7,7 @@ const middleware = require('./../middleware');
 router.post('/sign-in/email', middleware.loginEmailFormValidate, middleware.credentialExistedRequire, controller.authController.signInByEmailAddress);
 
 // register
-router.post('/sign-up', middleware.credentialNotExistedRequire, middleware.credentialProvider, controller.registerController.register);
+router.post('/sign-up', middleware.loginEmailFormValidate, middleware.credentialNotExistedRequire, middleware.credentialProvider, controller.registerController.register);
 
 // active account
 router.post('/sign-up/active', middleware.verifySecretKey, controller.registerController.active);

@@ -59,6 +59,15 @@ class CredentialRepository {
         return (yield this.collection.find ( { "identities.email" : email, "active": true } ).count()) > 0;
     }
 
+    /**
+     *
+     * @param email
+     * @return {boolean}
+     */
+    *existedWithEmail(email) {
+        return (yield this.collection.find ( { "identities.email" : email } ).count()) > 0;
+    }
+
 
     *findActiveByEmail(email) {
         return this.credentialBuilder.buildOneFromDb(yield this.collection.find(
