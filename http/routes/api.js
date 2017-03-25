@@ -3,11 +3,20 @@ const controller = require('./../controller');
 const middleware = require('./../middleware');
 
 
-// Authenticate
-router.post('/sign-in/email', middleware.loginEmailFormValidate, middleware.credentialExistedRequire, controller.authController.signInByEmailAddress);
+// email login
+router.post('/sign-in/email',
+    middleware.loginEmailFormValidate,
+    middleware.credentialExistedRequire,
+    controller.authController.signInByEmailAddress
+);
 
-// register
-router.post('/sign-up', middleware.loginEmailFormValidate, middleware.credentialNotExistedRequire, middleware.credentialProvider, controller.registerController.register);
+// sign-up
+router.post('/sign-up',
+    middleware.loginEmailFormValidate,
+    middleware.credentialNotExistedRequire,
+    middleware.credentialProvider,
+    controller.registerController.register
+);
 
 // active account
 router.post('/sign-up/active', middleware.verifySecretKey, controller.registerController.active);

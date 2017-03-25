@@ -8,7 +8,7 @@ module.exports = function *( next ) {
         this.status = 400;
         return this.body = {
             code: "REGISTER_SERVICE_ERROR",
-            message: "secret key is required"
+            message: "secret is required"
         }
     }
 
@@ -16,7 +16,7 @@ module.exports = function *( next ) {
         this.status = 401;
         return this.body = {
             code: "REGISTER_SERVICE_ERROR",
-            message: "secret key is malformed"
+            message: "secret is malformed"
         }
     }
 
