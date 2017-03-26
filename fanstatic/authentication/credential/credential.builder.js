@@ -81,21 +81,6 @@ class CredentialBuilder {
 
         return credentials;
     }
-
-    // buildFromRequest(rawData) {
-    //
-    //     let credential = new Credential();
-    //
-    //     credential.createdAt  = new Date().getTime();
-    //     credential.updatedAt  = new Date().getTime();
-    //     credential.identities.push({
-    //         email: rawData.email,
-    //         password: rawData.password,
-    //         type: "email"
-    //     });
-    //
-    //     return credential;
-    // }
 }
 
 module.exports = CredentialBuilder;

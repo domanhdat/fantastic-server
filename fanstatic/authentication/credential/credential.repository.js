@@ -36,9 +36,17 @@ class CredentialRepository {
      *
      * @param credential
      */
-    *insert(credential) {
-        const document = this.credentialReader.read(credential);
-        return yield this.collection.insert(document);
+    insert(credential) {
+
+        let document = {
+            identities: credential.identities,
+            active: false,
+            secret: credential.secret,
+            updatedAt: new Date().getTime(),
+            createdAt: new Date().getTime()
+        };
+
+        return this.collection.insert(document);
     }
 
     /**

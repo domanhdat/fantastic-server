@@ -14,7 +14,6 @@ router.post('/sign-in/email',
 router.post('/sign-up',
     middleware.loginEmailFormValidate,
     middleware.credentialNotExistedRequire,
-    middleware.credentialProvider,
     controller.registerController.register
 );
 

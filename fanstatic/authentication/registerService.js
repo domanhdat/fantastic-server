@@ -9,12 +9,20 @@ class RegisterService {
         this.hasher = hasher;
     }
 
-    *register(credential) {
+    *register(emailCredential) {
 
-        //@TODO optimize
-        // hash text password
-        credential.identities[0].password = yield this.hasher.hash(credential.identities[0].password);
+        let identity = {
+            email: emailCredential.email,
+            password: yield this.hasher.hash(emailCredential.password),
+            type: emailCredential.type
+        };
+
+        let credential = {
+            identities: []
+        };
+        credential.identities.push(identity);
         credential.secret = this.hasher.generateRandomKey();
+
         return yield this.credentialRepository.insert(credential);
     }
 
