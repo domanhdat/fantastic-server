@@ -17,10 +17,11 @@ exports.register = function *(next) {
             "code": "REGISTER_SERVICE_SUCCESS",
             "message": "register success"
         }
+
     } catch (error) {
         this.status = error.status || 500;
         this.body = {
-            code: 'REGISTER_ERROR',
+            code: 'REGISTER_SERVICE',
             message: error.message
         };
         this.app.emit('error', error, this);
@@ -37,7 +38,11 @@ exports.active = function *( next ) {
             message: "active success"
         }
     } catch (error) {
-        console.log ( error );
-        yield next;
+        this.status = error.status || 500;
+        this.body = {
+            code: 'REGISTER_SERVICE_ERROR',
+            message: error.message
+        };
+        this.app.emit('error', error, this);
     }
 };

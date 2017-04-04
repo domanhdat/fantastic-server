@@ -37,9 +37,13 @@ class RegisterService {
      */
     *active(secret) {
         let credential = yield this.credentialRepository.findBySecret(secret);
-        credential.active = true;
 
-        yield this.credentialRepository.update(credential);
+        if (!credential) {
+            throw Error('secret is malformed');
+        }
+
+        credential.active = true;
+        yield this.credentialRepository.updateActive(credential);
     }
 }
 

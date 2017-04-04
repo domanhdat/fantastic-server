@@ -7,13 +7,9 @@ class CredentialRepository {
     /**
      *
      * @param collection
-     * @param {CredentialBuilder} credentialBuilder
-     * @param {CredentialReader} credentialReader
      */
-    constructor(collection, credentialBuilder, credentialReader) {
+    constructor(collection) {
         this.collection = collection;
-        this.credentialBuilder = credentialBuilder;
-        this.credentialReader = credentialReader;
     }
 
     /**
@@ -22,14 +18,7 @@ class CredentialRepository {
      * @return Credential credential
      */
     *findById(id) {
-
-        let document = yield this.collection.find({_id: ObjectId(id)}).limit(1);
-
-        if (!document) {
-            return null;
-        }
-
-        return this.credentialBuilder.buildOneFromDb(document);
+        return yield this.collection.find({_id: ObjectId(id)}).limit(1);
     }
 
     /**
@@ -104,27 +93,27 @@ class CredentialRepository {
     /**
      *
      * @param secret
-     * @return {Credential}
+     * @return {*}
      */
     *findBySecret(secret) {
-        return this.credentialBuilder.buildOneFromDb(yield this.collection.find({
+        return yield this.collection.find({
             secret: secret,
             active: false
-        }).limit(1).toArray())
+        }).limit(1);
     }
 
     /**
      *
      * @param {Credential} credential
      */
-    *update(credential) {
-
-        const document = this.credentialReader.read(credential);
+    *updateActive(credential) {
 
         yield this.collection.update(
             {   _id: ObjectId(credential.id) },
             {
-                $set: document
+                $set: {
+                    active: true
+                }
             }
         )
     }
